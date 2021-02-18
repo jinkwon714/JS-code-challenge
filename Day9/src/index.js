@@ -1,18 +1,29 @@
-// <⚠️ DONT DELETE THIS ⚠️>
-// import "./styles.css";
-// <⚠️ /DONT DELETE THIS ⚠️>
+const range = document.getElementById("js-range");
+const title = document.querySelector(".js-title");
+const guessForm = document.getElementById("js-guess");
+const result = document.getElementById("js-result");
 
-const form = document.querySelector(".js-form"),
-  range = document.querySelector(".range"),
-  input = document.querySelector(".input.textInput"),
-  text = document.querySelector(".text");
+function handleRangeChange(e) {
+  const selectedRange = title.querySelector("span");
+  selectedRange.innerHTML = range.value;
+}
 
-function handleFormSubmit(e) {
+function handleGuessSubmit(e) {
   e.preventDefault();
-  let rangeMax = range.querySelector("input.textInput").value;
-  text.innerHTML = `generate a number between 0 and ${rangeMax}`;
+  const guessInput = guessForm.querySelector("input");
+  if (guessInput.value === "") {
+    return;
+  }
+  const max = range.value;
+  const random = Math.ceil(Math.random() * max);
+  const userGuess = parseInt(guessInput.value, 10);
+  const resultSpan = result.querySelector("span");
+  resultSpan.innerHTML = `
+  You chose: ${userGuess},
+  the machine chose: ${random}.<br />
+  <strong>${userGuess === random ? "You won!" : "You lost!"}</strong>
+  `;
 }
 
-function init() {
-  form.addEventListener("submit", handleFormSubmit);
-}
+guessForm.addEventListener("submit", handleGuessSubmit);
+range.addEventListener("input", handleRangeChange);
