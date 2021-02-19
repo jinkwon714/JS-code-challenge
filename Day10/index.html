@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1>계산기</h1>
+
+        <div class="first-row">
+          <input
+            type="text"
+            name="result"
+            class="result"
+            id="result"
+            value=""
+            placeholder="Result"
+            readonly
+          />
+          <input
+            type="button"
+            value="C"
+            onclick="clearScreen()"
+            class="clear"
+          />
+        </div>
+        <div class="second-row">
+          <input type="button" value="1" onclick="liveScreen(1)" id="one" />
+          <input type="button" value="2" onclick="liveScreen(2)" id="two" />
+          <input type="button" value="3" onclick="liveScreen(3)" id="three" />
+          <input type="button" value="+" onclick="liveScreen('+')" />
+        </div>
+        <div class="third-row">
+          <input type="button" value="4" onclick="liveScreen(4)" id="four" />
+          <input type="button" value="5" onclick="liveScreen(5)" id="five" />
+          <input type="button" value="6" onclick="liveScreen(6)" id="six" />
+          <input type="button" value="-" onclick="liveScreen('-')" />
+        </div>
+        <div class="fourth-row">
+          <input type="button" value="7" onclick="liveScreen(7)" id="seven" />
+          <input type="button" value="8" onclick="liveScreen(8)" id="eight" />
+          <input type="button" value="9" onclick="liveScreen(9)" id="nine" />
+          <input type="button" value="x" onclick="liveScreen('*')" />
+        </div>
+        <div class="fifth-row">
+          <input type="button" value="/" onclick="liveScreen('/')" />
+
+          <input type="button" value="0" id="zero" onclick="liveScreen(0)" />
+          <input
+            type="button"
+            value="."
+            class="dot"
+            onclick="liveScreen('.')"
+          />
+          <input
+            type="button"
+            value="="
+            onclick="result.value = eval(result.value)"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
